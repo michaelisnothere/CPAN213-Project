@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import globalStyles from "../shared/globalStyles";
+
 const Search = ({ navigation }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -29,36 +31,43 @@ const Search = ({ navigation }) => {
 
   const renderItems = ({ item }) => {
     return (
-      <View>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("MovieDetails", { item });
           }}
+          style={globalStyles.touchWrapper}
         >
-          <Image
-            source={{ uri: `${baseURL}${item.poster_path}` }}
-            style={{ width: 150, height: 225 }}
-          />
+          <View style={globalStyles.movieContainer}>
+            <Image
+              source={{ uri: `${baseURL}${item.poster_path}` }}
+              style={globalStyles.posterImage}
+            />
+            <View style={globalStyles.textContainer}>
+              <Text style={globalStyles.movieTitle}>{item.title}</Text>
+            </View>
+          </View>
         </TouchableOpacity>
-        <View>
-          <Text>{item.title}</Text>
-        </View>
-      </View>
+
     );
   };
 
   return (
     <View>
-      <Text>Search</Text>
-      <TextInput
-        placeholder="Search For"
-        value={query}
-        onChangeText={setQuery}
-      />
+      <View>
+        <TextInput
+          placeholder="Search For"
+          value={query}
+          onChangeText={setQuery}
+          style={globalStyles.inputBox}
+        />
 
-      <TouchableOpacity onPress={handleSearch}>
-        <Text>Search</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={globalStyles.loginButton}  
+          onPress={handleSearch}>
+          <Text>Search</Text>
+        </TouchableOpacity>
+      </View>
+
 
       <View>
         <FlatList

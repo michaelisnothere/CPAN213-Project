@@ -3,6 +3,8 @@ import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../redux/actions";
 
+import globalStyles from "../shared/globalStyles";
+
 const FavMovies = ({ navigation }) => {
   const dispatch = useDispatch();
   const favMovies = useSelector((state) => state.movies.listOfMovies);
@@ -17,19 +19,24 @@ const FavMovies = ({ navigation }) => {
 
   const renderItems = ({ item }) => {
     return (
-      <View>
+
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("FavMovieDetails", { item });
           }}
+          style={globalStyles.touchWrapper}
         >
-          <Image
-            source={{ uri: `${baseURL}${item.Movie.poster_path}` }}
-            style={{ width: 150, height: 225 }}
-          />
+          <View style={globalStyles.movieContainer}>
+            <Image
+              source={{ uri: `${baseURL}${item.Movie.poster_path}` }}
+              style={globalStyles.posterImage}
+            />
+            <View style={globalStyles.textContainer}>
+              <Text style={globalStyles.movieTitle}>{item.Movie.title}</Text>
+            </View>
+        </View>
         </TouchableOpacity>
-        <Text>{item.Movie.title}</Text>
-      </View>
+
     );
   };
 
@@ -45,7 +52,6 @@ const FavMovies = ({ navigation }) => {
     <View>
       {favMovies && favMovies.length > 0 ? (
         <View>
-          <Text>Favourite Movies</Text>
           <View>
             <FlatList
               data={favMovies}
@@ -55,7 +61,9 @@ const FavMovies = ({ navigation }) => {
           </View>
         </View>
       ) : (
-        <Text>No favourites added</Text>
+        <View style={globalStyles.movieContainer}>
+          <Text>No favourites added</Text>
+        </View>
       )}
     </View>
   );

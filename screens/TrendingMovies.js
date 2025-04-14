@@ -25,41 +25,37 @@ const TrendingMovies = ({ navigation }) => {
 
   const renderItems = ({ item }) => {
     return (
-      <View>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("MovieDetails", { item });
-          }}
-        >
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("MovieDetails", { item });
+        }}
+        style={globalStyles.touchWrapper}
+      >
+        <View style={globalStyles.movieContainer}>
           <Image
             source={{ uri: `${baseURL}${item.poster_path}` }}
-            style={{ width: 150, height: 225 }}
+            style={globalStyles.posterImage}
           />
-        </TouchableOpacity>
-        <View>
-          <Text>{item.title}</Text>
-          <Text>{item.overview}</Text>
+          <View style={globalStyles.textContainer}>
+            <Text style={globalStyles.movieTitle} numberOfLines={2}>
+              {item.title}
+            </Text>
+            <Text style={globalStyles.movieOverview} numberOfLines={4}>
+              {item.overview}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
   return (
     <View style={globalStyles.TrendingMovies}>
-      <Text style ={globalStyles.pageHeader}>Trending Movies</Text>
+      <Text style ={globalStyles.pageHeader}>Click for more info! </Text>
       <FlatList
         data={movies}
         renderItem={renderItems}
         keyExtractor={(item) => item.id.toString()}
-<<<<<<< HEAD
-=======
-        renderItem={({item}) => (
-          <View style={globalStyles.movieItem}>
-            <Text style={globalStyles.movieTitle}>{item.title}</Text>
-            <Text style={globalStyles.movieOverview}>{item.overview}</Text>
-          </View>
-        )}
->>>>>>> liamHumble
       />
     </View>
   );

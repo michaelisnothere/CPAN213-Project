@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/actions";
+import globalStyles from "../shared/globalStyles";
 
 const Profile = ({ navigation }) => {
   const dispatch = useDispatch();

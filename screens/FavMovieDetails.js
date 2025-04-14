@@ -3,6 +3,8 @@ import { addMovie } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { deleteMovie } from "../redux/actions";
 
+import globalStyles from "../shared/globalStyles";
+
 const FavMovieDetails = ({ navigation, route }) => {
   const baseURL = "https://image.tmdb.org/t/p/w500";
   const { item } = route.params;
@@ -30,17 +32,19 @@ const FavMovieDetails = ({ navigation, route }) => {
   };
 
   return (
-    <View>
-      <Text>Favourite movie details</Text>
+    <View style={globalStyles.movieDetailScreenContainer}>
       <Image
         source={{ uri: `${baseURL}${item.Movie.poster_path}` }}
-        style={{ width: 150, height: 225 }}
+        style={globalStyles.posterImage}
       />
-      <Text>{item.Movie.title}</Text>
-      <Text>{item.Movie.overview}</Text>
+      <View style={globalStyles.movieDetails}>
+        <Text style ={{fontWeight: 'bold'}}>{item.Movie.title}</Text> 
+        <Text>{item.Movie.overview}</Text>
+      </View>
 
-      <View>
-        <Text>Details</Text>
+
+      <View style={globalStyles.movieDetails}>
+        <Text style ={{fontWeight: 'bold'}}>Details</Text>
         <Text>Language: {item.Movie.original_language}</Text>
         <Text>Popularity: {item.Movie.popularity}</Text>
         <Text>Release date: {item.Movie.release_date}</Text>

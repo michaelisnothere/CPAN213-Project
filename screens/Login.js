@@ -18,20 +18,24 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Login Screen</Text>
+    <View style={globalStyles.loginContainer}>
       <TextInput
+        style={globalStyles.inputBox}
         placeholder="Username"
         value={username}
         onChangeText={(text) => setUsername(text)}
       />
       <TextInput
+        style={globalStyles.inputBox}
         placeholder="Password"
         value={password}
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
       />
-      <TouchableOpacity onPress={handleLogin}>
+      <TouchableOpacity 
+        style={globalStyles.loginButton}  
+        onPress={handleLogin}
+      >
         <Text>Log In</Text>
       </TouchableOpacity>
     </View>
