@@ -1,35 +1,18 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from './screens/HomeScreen';
-import TrendingMovies from './screens/TrendingMovies';
-import Search from './screens/Search';
-import Login from './screens/Login';
+import React from "react";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
-const Stack = createNativeStackNavigator();
+import Nav from "./navigation/Nav";
 
 export default function App() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="TrendingMovies" component={TrendingMovies} />
-            <Stack.Screen name="Search" component={Search} />
-            <Stack.Screen name="Login" component={Login} />
-          </Stack.Navigator>
-        </NavigationContainer>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Provider store={store}>
+          <Nav />
+        </Provider>
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
