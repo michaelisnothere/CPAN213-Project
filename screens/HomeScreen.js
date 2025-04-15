@@ -2,20 +2,22 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 
+import globalStyles from "../shared/globalStyles";
+
 const HomeScreen = ({ navigation }) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   return (
-    <View>
-      <Text>Home Screen</Text>
-
+    <View style={globalStyles.homePageContainer}>
+      <Text style={globalStyles.headerText}>Welcome ! </Text>
       <TouchableOpacity
         onPress={() => {
           console.log("Trending Movies");
           navigation.navigate("TrendingMovies");
         }}
+        style={globalStyles.button}
       >
-        <Text>Trending Movies</Text>
+        <Text style={globalStyles.buttonText}>Trending Movies</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -23,8 +25,9 @@ const HomeScreen = ({ navigation }) => {
           console.log("Search");
           navigation.navigate("Search");
         }}
+        style={globalStyles.button}
       >
-        <Text>Search</Text>
+        <Text style={globalStyles.buttonText}>Search</Text>
       </TouchableOpacity>
 
       {isLoggedIn ? (
@@ -33,8 +36,9 @@ const HomeScreen = ({ navigation }) => {
             console.log("Profile");
             navigation.navigate("Profile");
           }}
+          style={globalStyles.button}
         >
-          <Text>Profile</Text>
+          <Text style={globalStyles.buttonText}>Profile</Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
@@ -42,8 +46,9 @@ const HomeScreen = ({ navigation }) => {
             console.log("Login");
             navigation.navigate("Login");
           }}
+          style={globalStyles.button}
         >
-          <Text>Login / Register</Text>
+          <Text style={globalStyles.buttonText}>Login / Register</Text>
         </TouchableOpacity>
       )}
     </View>

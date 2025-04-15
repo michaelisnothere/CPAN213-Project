@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/actions";
 import globalStyles from "../shared/globalStyles";
@@ -14,13 +14,13 @@ const Profile = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Profile Page</Text>
-      <Text>Welcome, {username}!</Text>
-      <TouchableOpacity onPress={handleLogout}>
-        <Text>Logout</Text>
-      </TouchableOpacity>
-    </View>
+      <View style={globalStyles.profileContainer}>
+        <Text style={globalStyles.profileTitle}>Profile Page</Text>
+        <Text style={globalStyles.profileText}> Hello, {username}!</Text>
+        <TouchableOpacity style={globalStyles.buttonDetail} onPress={handleLogout}>
+          <Text style={globalStyles.buttonText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
   );
 };
 

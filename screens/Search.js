@@ -13,6 +13,7 @@ import globalStyles from "../shared/globalStyles";
 const Search = ({ navigation }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [searchPerformed, setSearchPerformed] = useState(false);
   const baseURL = "https://image.tmdb.org/t/p/w500";
 
   const handleSearch = async () => {
@@ -24,6 +25,7 @@ const Search = ({ navigation }) => {
       const data = await response.json();
       console.log(data.results);
       setResults(data.results);
+      setSearchPerformed(true);
     } catch (err) {
       console.error("Error fetching: ", err);
     }
@@ -52,29 +54,40 @@ const Search = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <View>
+    <View >
+      <View style={{ marginTop: 10, marginHorizontal: 5,alignItems: 'center'}}>
         <TextInput
-          placeholder="Search For"
+          placeholder="Search For Movie By title"
           value={query}
-          onChangeText={setQuery}
+          onChangeText={(text) => {
+            setQuery(text);
+            setSearchPerformed(false);
+          }}
           style={globalStyles.inputBox}
+          
         />
 
         <TouchableOpacity
-          style={globalStyles.loginButton}  
+          style={globalStyles.button}  
           onPress={handleSearch}>
-          <Text>Search</Text>
+          <Text style={globalStyles.buttonText}>Search</Text>
         </TouchableOpacity>
       </View>
 
 
-      <View>
-        <FlatList
-          data={results}
-          renderItem={renderItems}
-          keyExtractor={(item) => item.id.toString()}
-        />
+      <View style={{ marginTop: 20 }}>
+        {searchPerformed && results.length === 0 ? (
+          <Text 
+            style={{ textAlign: "center", fontSize: 16 }}
+          >
+            No search results found for "{query}" </Text>
+        ) : (
+          <FlatList
+            data={results}
+            renderItem={renderItems}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        )}
       </View>
     </View>
   );

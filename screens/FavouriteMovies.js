@@ -42,7 +42,7 @@ const FavMovies = ({ navigation }) => {
 
   if (!isLoggedIn) {
     return (
-      <View>
+      <View style={globalStyles.movieContainer}>
         <Text>You need to be logged in to view your favourite movies.</Text>
       </View>
     );

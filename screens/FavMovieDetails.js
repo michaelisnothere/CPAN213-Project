@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { View, Text, Image, TouchableOpacity, Alert, ScrollView } from "react-native";
 import { addMovie } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { deleteMovie } from "../redux/actions";
@@ -32,15 +32,16 @@ const FavMovieDetails = ({ navigation, route }) => {
   };
 
   return (
-    <View style={globalStyles.movieDetailScreenContainer}>
-      <Image
-        source={{ uri: `${baseURL}${item.Movie.poster_path}` }}
-        style={globalStyles.posterImage}
-      />
-      <View style={globalStyles.movieDetails}>
-        <Text style ={{fontWeight: 'bold'}}>{item.Movie.title}</Text> 
-        <Text>{item.Movie.overview}</Text>
-      </View>
+    <ScrollView>
+      <View style={globalStyles.movieDetailScreenContainer}>
+        <Image
+          source={{ uri: `${baseURL}${item.Movie.poster_path}` }}
+          style={globalStyles.posterImage}
+        />
+        <View style={globalStyles.movieDetails}>
+          <Text style ={{fontWeight: 'bold'}}>{item.Movie.title}</Text> 
+          <Text>{item.Movie.overview}</Text>
+        </View>
 
 
       <View style={globalStyles.movieDetails}>
@@ -53,15 +54,20 @@ const FavMovieDetails = ({ navigation, route }) => {
         </Text>
         <TouchableOpacity
           onPress={() => navigation.navigate("FavMoviesScreen")}
+          style={globalStyles.buttonDetail}
         >
           <Text>Go back</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleDelete}>
+        <TouchableOpacity 
+          style={globalStyles.buttonDetail}
+          onPress={handleDelete}>
           <Text>Delete From Favs?</Text>
         </TouchableOpacity>
       </View>
     </View>
+    </ScrollView>
+
   );
 };
 

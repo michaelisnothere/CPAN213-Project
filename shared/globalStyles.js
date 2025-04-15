@@ -88,7 +88,8 @@ const globalStyles = StyleSheet.create({
     layout:{
         alignItems: "center",
         justifyContent: "center",
-        alignContent: "center"
+        alignContent: "center",
+        paddingBottom: 50
     },
     movieDetails :{
         backgroundColor: "#fff",
@@ -113,7 +114,83 @@ const globalStyles = StyleSheet.create({
         marginBottom: 16,
         backgroundColor: "#f9f9f9",
         color: "#333"
-    }
+    },
+    homePageContainer:{
+        flex: 1,
+        alignItems: "center",
+        backgroundColor: "#f2f2f2",
+        padding: 20,
+    },
+    button:{
+        backgroundColor: "tomato",
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        borderRadius: 8,
+        marginVertical: 8,
+        width: "80%",
+        alignItems: "center",
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+    },
+    buttonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "600",
+    },
+    headerText : {
+        fontSize: 36,
+        fontWeight: 500,
+        marginBottom: 30
+    },
+    buttonDetail:{
+        backgroundColor: "tomato",
+        paddingVertical: 5,
+        paddingHorizontal: 24,
+        borderRadius: 8,
+        marginTop: 8,
+        alignItems: "center",
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+    },
+    profileContainer: {
+        backgroundColor: "white",
+        width: "80%",
+        borderRadius: 16,
+        padding: 24,
+        alignItems: "center",
+        alignSelf: "center",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 5,
+        marginTop: 16,
+      },
+      profileTitle: {
+        fontSize: 24,
+        fontWeight: "bold",
+        marginBottom: 10,
+      },
+      profileText: {
+        fontSize: 18,
+        marginBottom: 20,
+      },
+      
+      profileImageWrapper: {
+        width: 120,
+        height: 120,
+        borderRadius: 60,
+        backgroundColor: "#ccc",
+        overflow: "hidden",
+        justifyContent: "center",
+        alignItems: "center",
+      },
+      
+      profileImage: {
+        width: "100%",
+        height: "100%",
+        resizeMode: "cover",
+      },
 });
 
 export default globalStyles;

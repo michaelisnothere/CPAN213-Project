@@ -36,11 +36,15 @@ const MovieDetails = ({ navigation, route }) => {
         <Text>
           Rated: {item.vote_average} out of {item.vote_count} votes
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("TrendingMovies")}>
+        <TouchableOpacity
+          style={globalStyles.buttonDetail}
+          onPress={() => navigation.navigate("TrendingMovies")}>
           <Text>Go back</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleAdd}>
+        <TouchableOpacity 
+          style={globalStyles.buttonDetail}
+          onPress={handleAdd}>
           <Text>Add to Favourites?</Text>
         </TouchableOpacity>
       </View>

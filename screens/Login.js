@@ -33,10 +33,10 @@ const Login = ({ navigation }) => {
         secureTextEntry
       />
       <TouchableOpacity 
-        style={globalStyles.loginButton}  
+        style={globalStyles.button}  
         onPress={handleLogin}
       >
-        <Text>Log In</Text>
+        <Text style={globalStyles.buttonText}>Log In</Text>
       </TouchableOpacity>
     </View>
   );
